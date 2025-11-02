@@ -3,15 +3,11 @@
 
 #include "stm32f10x.h"
 
-// 按键定义
-#define KEY_LEFT    GPIO_Pin_0
-#define KEY_RIGHT   GPIO_Pin_1
-#define KEY_FIRE    GPIO_Pin_2
+// 按键初始化函数
+void Key_Init(void);
 
-// 函数声明
-void KEY_Init(void);
-uint8_t KEY_ReadLeft(void);
-uint8_t KEY_ReadRight(void);
-uint8_t KEY_ReadFire(void);
+// 按键扫描函数
+// 返回值：0-无按键按下，1-上移(PA0)，2-下移(PA2)，3-发射(PC14)
+uint8_t Key_Scan(void);
 
 #endif

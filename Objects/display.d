@@ -28,5 +28,7 @@
 .\objects\display.o: .\Library\stm32f10x_usart.h
 .\objects\display.o: .\Library\stm32f10x_wwdg.h
 .\objects\display.o: .\Library\misc.h
-.\objects\display.o: Hardware\display.h
-.\objects\display.o: Hardware\oled.h
+.\objects\display.o: Hardware\OLED.h
+.\objects\display.o: Hardware\game.h
+.\objects\display.o: C:\Users\29575\Desktop\STM32\ARM\ARMCC\Bin\..\include\string.h
+.\objects\display.o: .\System\Delay.h

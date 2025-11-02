@@ -29,5 +29,7 @@
 .\objects\game.o: .\Library\stm32f10x_wwdg.h
 .\objects\game.o: .\Library\misc.h
 .\objects\game.o: Hardware\game.h
-.\objects\game.o: Hardware\key.h
+.\objects\game.o: Hardware\Key.h
 .\objects\game.o: Hardware\display.h
+.\objects\game.o: .\System\Delay.h
+.\objects\game.o: C:\Users\29575\Desktop\STM32\ARM\ARMCC\Bin\..\include\stdlib.h

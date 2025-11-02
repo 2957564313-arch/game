@@ -1,28 +1,40 @@
 #include "stm32f10x.h"
-#include "game.h"
-#include "key.h"
+#include "Key.h"
 #include "display.h"
+#include "game.h"
 #include "Delay.h"
 
-volatile uint32_t msTicks = 0;
-
-int main(void) {
-    // 系统初始化
-    SystemInit();
+int main(void)
+{
+    // 初始化外设
+    Key_Init();
+    Display_Init();
     
-    // 配置SysTick为1ms中断
-    if(SysTick_Config(SystemCoreClock / 1000)) {
-        while(1);
-    }
+    // 显示游戏开始画面
+    Draw_GameStart();
     
-    // 模块初始化
-    KEY_Init();
-    DISPLAY_Init();
-    GAME_Init();
+    // 等待按键开始游戏
+    while(Key_Scan() == 0);
+    Delay_ms(200); // 消抖
     
-    // 主循环
-    while(1) {
-        GAME_Update();
-        Delay_ms(100); // 降低更新频率以适应字符显示
+    // 初始化游戏
+    Game_Init();
+    
+    // 开始游戏主循环
+    Game_Loop();
+    
+    while(1)
+    {
+        // 游戏结束后等待按键重启
+        if(Key_Scan() != 0)
+        {
+            Delay_ms(200); // 消抖
+            
+            // 重新初始化游戏
+            Game_Init();
+            
+            // 重新开始游戏主循环
+            Game_Loop();
+        }
     }
 }
